@@ -15,6 +15,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "Infrastru
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test", "Test\Test.csproj", "{12BE5C8E-F2EC-4942-9798-454E54D002DB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventManager", "EventManager\EventManager.csproj", "{7B7AE4FE-F54C-46AB-95AE-41FCAF729E55}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{12BE5C8E-F2EC-4942-9798-454E54D002DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{12BE5C8E-F2EC-4942-9798-454E54D002DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{12BE5C8E-F2EC-4942-9798-454E54D002DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B7AE4FE-F54C-46AB-95AE-41FCAF729E55}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B7AE4FE-F54C-46AB-95AE-41FCAF729E55}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B7AE4FE-F54C-46AB-95AE-41FCAF729E55}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B7AE4FE-F54C-46AB-95AE-41FCAF729E55}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

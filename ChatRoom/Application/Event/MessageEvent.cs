@@ -1,4 +1,4 @@
-﻿namespace Infrastructure.Event
+﻿namespace Application.Event
 {
     public class MessageEvent
     {

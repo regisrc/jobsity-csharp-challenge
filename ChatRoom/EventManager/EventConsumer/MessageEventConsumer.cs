@@ -1,17 +1,19 @@
-﻿using Infrastructure.Event;
-using Infrastructure.MessageBroker;
+﻿using Application.Event;
+using Application.Interface;
 using Microsoft.Extensions.Logging;
 using RabbitMQ.Client.Events;
-using System.Collections.Generic;
 using System.Text;
 using System.Text.Json;
 
-namespace Infrastructure.EventConsumer
+namespace EventManager.EventConsumer
 {
     public class MessageEventConsumer : Consumer
     {
-        public MessageEventConsumer(ILogger<Consumer> logger) : base(logger)
+        private readonly IMessageService _messageService;
+
+        public MessageEventConsumer(IMessageService messageService, ILogger<Consumer> logger) : base(logger)
         {
+            _messageService = messageService;
         }
 
         public override void ConsumerReceived(object sender, BasicDeliverEventArgs e)
@@ -19,8 +21,7 @@ namespace Infrastructure.EventConsumer
             var str = Encoding.UTF8.GetString(e.Body.ToArray());
             var message = JsonSerializer.Deserialize<MessageEvent>(str);
 
-            _logger.LogInformation(
-                $"[new message | {DateTime.Now:yyyy-MM-dd HH:mm:ss}] " + message.Message);
+            _messageService.SaveMessage(message);
         }
     }
 }
