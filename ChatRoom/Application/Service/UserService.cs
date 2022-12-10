@@ -58,7 +58,7 @@ namespace Application.Service
             var token = Guid.NewGuid();
             result.LoggedToken = token;
             result.UpdateDate = DateTime.UtcNow;
-            result.TokenExpirationDate = DateTime.UtcNow.AddMinutes(3);
+            result.TokenExpirationDate = DateTime.UtcNow.AddMinutes(30);
 
             await _userRepository.Update(result);
 
