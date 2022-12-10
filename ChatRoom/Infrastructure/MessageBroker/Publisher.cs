@@ -7,8 +7,8 @@ namespace Infrastructure.MessageBroker
 {
     public class Publisher : IPublisher
     {
-        private static readonly string _url = "localhost";
-        private static readonly string _queue = "chat_message";
+        private readonly string _url = "localhost";
+        private readonly string _queue = "chat_message";
 
         public void Publish(object message)
         {

@@ -1,3 +1,4 @@
+using Infrastructure.EventConsumer;
 using Infrastructure.Interface;
 using Infrastructure.MessageBroker;
 
@@ -11,6 +12,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddTransient<IPublisher, Publisher>();
+builder.Services.AddHostedService<MessageEventConsumer>();
 
 var app = builder.Build();
 
