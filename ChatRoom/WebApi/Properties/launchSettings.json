@@ -27,6 +27,7 @@
       "applicationUrl": "https://localhost:7233;http://localhost:5170",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
+        "db_file_path": "Data Source=C:\\Users\\Filipe Eduardo Regis\\Documents\\ChatRoom.db",
         "message_broker_url": "localhost",
         "message_broker_message_queue": "chat_message",
         "message_broker_chatroom_queue": "chatroom_creation"

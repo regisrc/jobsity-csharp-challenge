@@ -1,9 +1,7 @@
-﻿namespace Application.Event
+﻿namespace Infrastructure.Entity
 {
-    public class MessageEvent
+    public class MessageEntity : BaseEntity
     {
-        public Guid Guid { get; set; }
-
         public string Message { get; set; }
 
         public Guid ChatRoomId { get; set; }

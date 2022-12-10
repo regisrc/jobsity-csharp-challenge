@@ -1,5 +1,4 @@
-﻿using Infrastructure.Interface;
-using RabbitMQ.Client;
+﻿using RabbitMQ.Client;
 using System.Text;
 using System.Text.Json;
 

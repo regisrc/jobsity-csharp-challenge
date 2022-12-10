@@ -7,6 +7,6 @@ namespace Application.Interface
     {
         void PublishMessage(MessageDto messageDto);
 
-        void SaveMessage(MessageEvent messageEvent);
+        Task SaveMessage(MessageEvent messageEvent);
     }
 }

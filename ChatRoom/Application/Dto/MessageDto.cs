@@ -6,5 +6,8 @@ namespace Application.Dto
     {
         [JsonProperty("message")]
         public string Message { get; set; }
+
+        [JsonProperty("chatRoomId")]
+        public Guid ChatRoomId { get; set; }
     }
 }

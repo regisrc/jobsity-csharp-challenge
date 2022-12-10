@@ -1,8 +1,11 @@
 using Application.Interface;
 using Application.Service;
 using EventManager.EventConsumer;
+using Infrastructure.Context;
 using Infrastructure.Interface;
 using Infrastructure.MessageBroker;
+using Infrastructure.Repository;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,6 +23,15 @@ builder.Services.AddTransient<IMessageService, MessageService>();
 builder.Services.AddTransient<IChatRoomService, ChatRoomService>();
 
 builder.Services.AddHostedService<MessageEventConsumer>();
+builder.Services.AddHostedService<ChatRoomEventConsumer>();
+
+builder.Services.AddDbContext<ChatRoomContext>(options =>
+{
+    options.UseSqlite(Environment.GetEnvironmentVariable("db_file_path"));
+});
+
+builder.Services.AddTransient<IChatRoomRepository, ChatRoomRepository>();
+builder.Services.AddTransient<IMessageRepository, MessageRepository>();
 
 var app = builder.Build();
 

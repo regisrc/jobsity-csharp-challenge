@@ -11,7 +11,7 @@ namespace EventManager.EventConsumer
     {
         private readonly IMessageService _messageService;
 
-        public MessageEventConsumer(IMessageService messageService, ILogger<Consumer> logger) : base(logger, Environment.GetEnvironmentVariable("message_broker_queue") ?? string.Empty)
+        public MessageEventConsumer(IMessageService messageService, ILogger<Consumer> logger) : base(logger, Environment.GetEnvironmentVariable("message_broker_message_queue") ?? string.Empty)
         {
             _messageService = messageService;
         }
