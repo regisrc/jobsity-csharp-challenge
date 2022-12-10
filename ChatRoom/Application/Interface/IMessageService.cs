@@ -8,5 +8,7 @@ namespace Application.Interface
         void PublishMessage(MessageDto messageDto);
 
         Task SaveMessage(MessageEvent messageEvent);
+
+        Task<List<MessageDto>> GetMessages(Guid chatRoomId);
     }
 }

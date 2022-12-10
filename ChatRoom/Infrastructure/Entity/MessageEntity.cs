@@ -5,5 +5,7 @@
         public string Message { get; set; }
 
         public Guid ChatRoomId { get; set; }
+
+        public Guid UserId { get; set; }
     }
 }

@@ -14,6 +14,8 @@ namespace Infrastructure.Context
 
         public DbSet<MessageEntity> Messages { get; set; }
 
+        public DbSet<UserEntity> Users { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

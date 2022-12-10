@@ -9,5 +9,8 @@ namespace Application.Dto
 
         [JsonProperty("chatRoomId")]
         public Guid ChatRoomId { get; set; }
+
+        [JsonProperty("userId")]
+        public Guid UserId { get; set; }
     }
 }

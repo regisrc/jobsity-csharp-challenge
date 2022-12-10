@@ -8,5 +8,7 @@ namespace Application.Interface
         void CreateChatRoom(ChatRoomDto chatRoomDto);
 
         Task SaveChatRoom(ChatRoomEvent chatRoomEvent);
+
+        Task<List<ChatRoomDto>> GetChatRooms();
     }
 }

@@ -8,7 +8,7 @@ namespace Infrastructure.Repository
 {
     public class RepositoryAsync<T> : IRepositoryAsync<T> where T : BaseEntity
     {
-        private readonly IServiceProvider _serviceProvider;
+        protected readonly IServiceProvider _serviceProvider;
 
         public RepositoryAsync(IServiceProvider serviceProvider)
         {

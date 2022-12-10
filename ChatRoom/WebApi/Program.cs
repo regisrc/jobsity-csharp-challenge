@@ -18,12 +18,15 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddTransient<IMessageEventPublisher, MessageEventPublisher>();
 builder.Services.AddTransient<IChatRoomEventPublisher, ChatRoomEventPublisher>();
+builder.Services.AddTransient<IUserEventPublisher, UserEventPublisher>();
 
 builder.Services.AddTransient<IMessageService, MessageService>();
 builder.Services.AddTransient<IChatRoomService, ChatRoomService>();
+builder.Services.AddTransient<IUserService, UserService>();
 
 builder.Services.AddHostedService<MessageEventConsumer>();
 builder.Services.AddHostedService<ChatRoomEventConsumer>();
+builder.Services.AddHostedService<UserEventConsumer>();
 
 builder.Services.AddDbContext<ChatRoomContext>(options =>
 {
@@ -32,6 +35,7 @@ builder.Services.AddDbContext<ChatRoomContext>(options =>
 
 builder.Services.AddTransient<IChatRoomRepository, ChatRoomRepository>();
 builder.Services.AddTransient<IMessageRepository, MessageRepository>();
+builder.Services.AddTransient<IUserRepository, UserRepository>();
 
 var app = builder.Build();
 
