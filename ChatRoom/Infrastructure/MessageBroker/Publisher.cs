@@ -7,15 +7,13 @@ namespace Infrastructure.MessageBroker
 {
     public class Publisher : IPublisher
     {
-        private readonly string _url = "localhost";
-        private readonly string _queue = "chat_message";
-
         public void Publish(object message)
         {
-            var factory = new ConnectionFactory() { HostName = _url };
+            var queue = Environment.GetEnvironmentVariable("message_broker_queue");
+            var factory = new ConnectionFactory() { HostName = Environment.GetEnvironmentVariable("message_broker_url") };
             using var connection = factory.CreateConnection();
             using var channel = connection.CreateModel();
-            channel.QueueDeclare(queue: _queue,
+            channel.QueueDeclare(queue: queue,
                                  durable: false,
                                  exclusive: false,
                                  autoDelete: false,
@@ -25,7 +23,7 @@ namespace Infrastructure.MessageBroker
             var body = Encoding.UTF8.GetBytes(json);
 
             channel.BasicPublish(exchange: string.Empty,
-                                 routingKey: _queue,
+                                 routingKey: queue,
                                  basicProperties: null,
                                  body: body);
         }
