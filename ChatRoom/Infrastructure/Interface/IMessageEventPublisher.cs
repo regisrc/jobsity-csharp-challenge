@@ -1,6 +1,6 @@
 ﻿namespace Infrastructure.Interface
 {
-    public interface IPublisher
+    public interface IMessageEventPublisher
     {
         void Publish(object message);
     }

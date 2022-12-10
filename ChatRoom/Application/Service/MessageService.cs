@@ -9,9 +9,9 @@ namespace Application.Service
     public class MessageService : IMessageService
     {
         private readonly ILogger _logger;
-        private readonly IPublisher _publisher;
+        private readonly IMessageEventPublisher _publisher;
 
-        public MessageService(ILogger<MessageService> logger, IPublisher publisher)
+        public MessageService(ILogger<MessageService> logger, IMessageEventPublisher publisher)
         {
             _logger = logger;
             _publisher = publisher;

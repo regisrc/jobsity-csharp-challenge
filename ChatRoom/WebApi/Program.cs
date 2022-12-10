@@ -13,8 +13,11 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddTransient<IPublisher, Publisher>();
+builder.Services.AddTransient<IMessageEventPublisher, MessageEventPublisher>();
+builder.Services.AddTransient<IChatRoomEventPublisher, ChatRoomEventPublisher>();
+
 builder.Services.AddTransient<IMessageService, MessageService>();
+builder.Services.AddTransient<IChatRoomService, ChatRoomService>();
 
 builder.Services.AddHostedService<MessageEventConsumer>();
 

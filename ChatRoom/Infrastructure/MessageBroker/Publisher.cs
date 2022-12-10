@@ -5,11 +5,10 @@ using System.Text.Json;
 
 namespace Infrastructure.MessageBroker
 {
-    public class Publisher : IPublisher
+    public class Publisher
     {
-        public void Publish(object message)
+        public void Publish(object message, string queue)
         {
-            var queue = Environment.GetEnvironmentVariable("message_broker_queue");
             var factory = new ConnectionFactory() { HostName = Environment.GetEnvironmentVariable("message_broker_url") };
             using var connection = factory.CreateConnection();
             using var channel = connection.CreateModel();

@@ -8,19 +8,20 @@ namespace EventManager.EventConsumer
     public abstract class Consumer : BackgroundService
     {
         protected readonly ILogger<Consumer> _logger;
+        protected readonly string _queue;
 
-        protected Consumer(ILogger<Consumer> logger)
+        protected Consumer(ILogger<Consumer> logger, string queue)
         {
             _logger = logger;
+            _queue = queue;
         }
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
-            var queue = Environment.GetEnvironmentVariable("message_broker_queue");
             var factory = new ConnectionFactory() { HostName = Environment.GetEnvironmentVariable("message_broker_url") };
             using var connection = factory.CreateConnection();
             using var channel = connection.CreateModel();
-            channel.QueueDeclare(queue: queue,
+            channel.QueueDeclare(queue: _queue,
                                  durable: false,
                                  exclusive: false,
                                  autoDelete: false,
@@ -28,7 +29,7 @@ namespace EventManager.EventConsumer
 
             var consumer = new EventingBasicConsumer(channel);
             consumer.Received += ConsumerReceived;
-            channel.BasicConsume(queue: queue,
+            channel.BasicConsume(queue: _queue,
                 autoAck: true,
                 consumer: consumer);
 
