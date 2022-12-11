@@ -28,7 +28,7 @@ namespace WebApi.Controllers
         }
 
         [HttpPost("createUser")]
-        public async Task<IActionResult> Create(UserDto userDto)
+        public async Task<IActionResult> Create(UserCreateDto userDto)
         {
             await _userService.CreateUser(userDto);
 

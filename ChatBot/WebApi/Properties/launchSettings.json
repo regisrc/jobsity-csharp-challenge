@@ -28,7 +28,8 @@
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
         "message_broker_url": "localhost",
-        "message_broker_message_queue": "chat_message"
+        "message_broker_message_queue": "chat_message",
+        "message_broker_message_bot_queue": "chat_message_bot"
       }
     },
     "IIS Express": {

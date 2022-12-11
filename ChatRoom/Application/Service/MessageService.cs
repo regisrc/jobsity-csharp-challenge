@@ -29,7 +29,7 @@ namespace Application.Service
             _userRepository = userRepository;
         }
 
-        public void PublishMessage(MessageDto messageDto)
+        public void PublishMessage(MessageCreateDto messageDto)
         {
             _logger.LogInformation("Publish Message Event");
 
@@ -42,6 +42,10 @@ namespace Application.Service
             };
 
             _publisher.Publish(@event);
+
+            @event.UserId = Guid.Parse(Environment.GetEnvironmentVariable("bot_guid"));
+
+            _publisher.PublishBotMessage(@event);
         }
 
         public async Task SaveMessage(MessageEvent messageEvent)
@@ -51,12 +55,13 @@ namespace Application.Service
             if (chatRoom == null)
             {
                 _logger.LogInformation("ChatRoom not found");
+
                 return;
             }
 
             var user = await _userRepository.GetById(messageEvent.UserId);
 
-            if (user == null)
+            if (user == null && messageEvent.UserId != Guid.Parse(Environment.GetEnvironmentVariable("bot_guid")))
             {
                 _logger.LogInformation("User not found");
 
@@ -80,6 +85,7 @@ namespace Application.Service
         public async Task<List<MessageDto>> GetMessages(Guid chatRoomId)
         {
             var result = await _messageRepository.GetByChatRoomId(chatRoomId);
+            var users = await _userRepository.GetAll();
 
             if (!result.Any())
                 return new List<MessageDto>();
@@ -88,8 +94,17 @@ namespace Application.Service
             {
                 ChatRoomId = x.ChatRoomId,
                 Message = x.Message,
-                UserId = x.UserId
+                UserId = x.UserId,
+                Name = GetUserName(users, x.UserId)
             }).ToList();
+        }
+
+        public string GetUserName(List<UserEntity> users, Guid userId)
+        {
+            if (userId == Guid.Parse(Environment.GetEnvironmentVariable("bot_guid")))
+                return "Bot";
+
+            return users.Find(x => x.Id == userId).Name;
         }
     }
 }

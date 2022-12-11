@@ -20,23 +20,26 @@ namespace Application.Service
             _publisher = publisher;
         }
 
-        public async Task CreateUser(UserDto userDto)
+        public async Task CreateUser(UserCreateDto userDto)
         {
             var result = await _userRepository.GetByLogin(userDto.Login);
 
-            if (result == null)
+            if (result != null)
             {
                 _logger.LogInformation("User already created");
 
                 return;
             }
 
+            var salt = Environment.GetEnvironmentVariable("bcrypt_salt");
+
             var entity = new UserEntity
             {
                 Id = Guid.NewGuid(),
                 CreationDate = DateTime.UtcNow,
-                Login = userDto.Login,
-                Password = userDto.Password
+                Login = BCrypt.Net.BCrypt.HashPassword(userDto.Login, salt),
+                Password = BCrypt.Net.BCrypt.HashPassword(userDto.Password, salt),
+                Name = userDto.Name
             };
 
             await _userRepository.Add(entity);
@@ -46,7 +49,11 @@ namespace Application.Service
 
         public async Task<LoginResponseDto> Login(UserDto userDto)
         {
-            var result = await _userRepository.GetByCredentials(userDto.Login, userDto.Password);
+            var salt = Environment.GetEnvironmentVariable("bcrypt_salt");
+
+            var result = await _userRepository.GetByCredentials(
+                BCrypt.Net.BCrypt.HashPassword(userDto.Login, salt),
+                BCrypt.Net.BCrypt.HashPassword(userDto.Password, salt));
 
             if (result == null)
             {

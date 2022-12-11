@@ -18,7 +18,7 @@ namespace WebApi.Controllers
         }
 
         [HttpPost(Name = "Send Message")]
-        public async Task<IActionResult> PostMessage([FromBody]MessageDto messageDto, Guid? token)
+        public async Task<IActionResult> PostMessage([FromBody]MessageCreateDto messageDto, Guid? token)
         {
             var result = await _userService.VerifyToken(token);
 

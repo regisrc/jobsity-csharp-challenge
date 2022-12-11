@@ -47,10 +47,11 @@ namespace Infrastructure.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
+                    Name = table.Column<string>(type: "TEXT", nullable: false),
                     Login = table.Column<string>(type: "TEXT", nullable: false),
                     Password = table.Column<string>(type: "TEXT", nullable: false),
-                    LoggedToken = table.Column<string>(type: "TEXT", nullable: true),
-                    TokenExpirationDate = table.Column<string>(type: "TEXT", nullable: true),
+                    LoggedToken = table.Column<Guid>(type: "TEXT", nullable: true),
+                    TokenExpirationDate = table.Column<DateTime>(type: "TEXT", nullable: true),
                     CreationDate = table.Column<DateTime>(type: "TEXT", nullable: false),
                     UpdateDate = table.Column<DateTime>(type: "TEXT", nullable: true)
                 },

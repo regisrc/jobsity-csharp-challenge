@@ -2,7 +2,7 @@
 
 namespace Application.Dto
 {
-    public class MessageDto
+    public class MessageCreateDto
     {
         [JsonProperty("message")]
         public string Message { get; set; }
@@ -12,8 +12,5 @@ namespace Application.Dto
 
         [JsonProperty("userId")]
         public Guid UserId { get; set; }
-
-        [JsonProperty("userName")]
-        public string Name { get; set; }
     }
 }

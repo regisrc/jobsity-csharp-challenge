@@ -5,7 +5,7 @@ namespace Application.Interface
 {
     public interface IUserService
     {
-        Task CreateUser(UserDto userDto);
+        Task CreateUser(UserCreateDto userDto);
 
         Task<LoginResponseDto> Login(UserDto userDto);
 

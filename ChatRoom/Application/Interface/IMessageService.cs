@@ -5,7 +5,7 @@ namespace Application.Interface
 {
     public interface IMessageService
     {
-        void PublishMessage(MessageDto messageDto);
+        void PublishMessage(MessageCreateDto messageDto);
 
         Task SaveMessage(MessageEvent messageEvent);
 

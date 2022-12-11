@@ -68,6 +68,7 @@ namespace Application.Service
             {
                 CreatorId = x.CreatorId,
                 Name = x.Name,
+                Id = x.Id
             }).ToList();
         }
     }

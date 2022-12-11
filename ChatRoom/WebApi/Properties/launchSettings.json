@@ -30,8 +30,11 @@
         "db_file_path": "Data Source=C:\\Users\\Filipe Eduardo Regis\\Documents\\ChatRoom.db",
         "message_broker_url": "localhost",
         "message_broker_message_queue": "chat_message",
+        "message_broker_message_bot_queue": "chat_message_bot",
         "message_broker_chatroom_queue": "chatroom_creation",
-        "message_broker_user_logoff_queue": "user_logoff"
+        "message_broker_user_logoff_queue": "user_logoff",
+        "bot_guid": "be7664e0-5653-4530-9b8d-cae6d87dc60e",
+        "bcrypt_salt": "$2a$12$D4G5f18o7aMMfwasBL7Gpu"
       }
     },
     "IIS Express": {

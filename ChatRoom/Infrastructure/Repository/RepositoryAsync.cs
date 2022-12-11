@@ -30,11 +30,11 @@ namespace Infrastructure.Repository
             return context.Set<T>().ToListAsync();
         }
 
-        public virtual async Task<T> GetById(Guid id)
+        public virtual async Task<T?> GetById(Guid id)
         {
             using var scope = _serviceProvider.CreateScope();
             var context = scope.ServiceProvider.GetService<ChatRoomContext>();
-            return await context.Set<T>().FirstAsync(x => Equals(x.Id, id));
+            return await context.Set<T>().FirstOrDefaultAsync(x => Equals(x.Id, id));
         }
 
         public virtual async Task Update(T entity)

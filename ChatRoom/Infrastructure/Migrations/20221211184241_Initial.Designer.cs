@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(ChatRoomContext))]
-    [Migration("20221210220734_Initial")]
+    [Migration("20221211184241_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -80,10 +80,14 @@ namespace Infrastructure.Migrations
                     b.Property<DateTime>("CreationDate")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("LoggedToken")
+                    b.Property<Guid?>("LoggedToken")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Login")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
@@ -91,7 +95,7 @@ namespace Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("TokenExpirationDate")
+                    b.Property<DateTime?>("TokenExpirationDate")
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime?>("UpdateDate")
