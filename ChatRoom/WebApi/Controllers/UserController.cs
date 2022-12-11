@@ -16,6 +16,14 @@ namespace WebApi.Controllers
             _userService = userService;
         }
 
+        [HttpGet("verifyToken")]
+        public async Task<IActionResult> Verify(Guid token)
+        {
+            var result = await _userService.VerifyToken(token);
+
+            return Ok(new { Success = result });
+        }
+
         [HttpPost("loginUser")]
         public async Task<IActionResult> Login(UserDto userDto)
         {

@@ -5,7 +5,7 @@ namespace Application.Interface
 {
     public interface IChatRoomService
     {
-        void CreateChatRoom(ChatRoomDto chatRoomDto);
+        void CreateChatRoom(ChatRoomCreateDto chatRoomDto);
 
         Task SaveChatRoom(ChatRoomEvent chatRoomEvent);
 

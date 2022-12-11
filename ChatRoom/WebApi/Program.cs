@@ -11,6 +11,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
+var corsPolicy = "_AllowAnyOrigin";
+
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -33,6 +35,12 @@ builder.Services.AddDbContext<ChatRoomContext>(options =>
     options.UseSqlite(Environment.GetEnvironmentVariable("db_file_path"));
 });
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(corsPolicy,
+        builder => builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
+});
+
 builder.Services.AddTransient<IChatRoomRepository, ChatRoomRepository>();
 builder.Services.AddTransient<IMessageRepository, MessageRepository>();
 builder.Services.AddTransient<IUserRepository, UserRepository>();
@@ -51,5 +59,7 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.UseCors(corsPolicy);
 
 app.Run();

@@ -59,7 +59,7 @@ namespace Application.Service
             {
                 _logger.LogInformation("The credentials were incorrect");
 
-                return new LoginResponseDto { Success = false, Token = null };
+                return new LoginResponseDto { Success = false, Token = null, UserId = null };
             }
 
             var token = Guid.NewGuid();
@@ -69,7 +69,7 @@ namespace Application.Service
 
             await _userRepository.Update(result);
 
-            return new LoginResponseDto { Success = true, Token = token };
+            return new LoginResponseDto { Success = true, Token = token, UserId = result.Id };
         }
 
         public async Task Logoff(UserLogoffEvent userLogoffEvent)

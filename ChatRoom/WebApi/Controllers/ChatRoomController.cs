@@ -19,7 +19,7 @@ namespace WebApi.Controllers
         }
 
         [HttpPost(Name = "Create Chatroom")]
-        public async Task<IActionResult> PostChatroom([FromBody]ChatRoomDto chatRoomDto, Guid? token)
+        public async Task<IActionResult> PostChatroom([FromBody] ChatRoomCreateDto chatRoomDto, Guid? token)
         {
             var result = await _userService.VerifyToken(token);
 

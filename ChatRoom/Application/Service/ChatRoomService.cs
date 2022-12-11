@@ -22,7 +22,7 @@ namespace Application.Service
             _userRepository = userRepository;
         }
 
-        public void CreateChatRoom(ChatRoomDto chatRoomDto)
+        public void CreateChatRoom(ChatRoomCreateDto chatRoomDto)
         {
             _logger.LogInformation("Publish Message Event");
 

@@ -9,5 +9,8 @@ namespace Application.Dto
 
         [JsonProperty("token")]
         public Guid? Token { get; set; }
+
+        [JsonProperty("userId")]
+        public Guid? UserId { get; set; }
     }
 }
