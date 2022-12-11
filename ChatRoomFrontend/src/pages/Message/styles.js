@@ -7,7 +7,7 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
 
-  margin-top: 100px;
+  margin-top: 5px;
 
   width: 100vw;
   height: 100vh;
@@ -21,6 +21,8 @@ export const ChatRoomCard = styled.div`
   width: 70%;
   min-height: 50%;
   padding: 10px;
+
+  overflow-y: scroll;
 
   margin-bottom: 15px;
 
