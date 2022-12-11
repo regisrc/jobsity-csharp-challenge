@@ -13,7 +13,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\Application\Application.csproj" />
+		<Folder Include="Event\" />
+		<Folder Include="Interface\" />
+		<Folder Include="Service\" />
 	</ItemGroup>
 
 </Project>
