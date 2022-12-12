@@ -16,9 +16,9 @@ namespace Application.Service
         private readonly IUserRepository _userRepository;
 
         public MessageService(
-            ILogger<MessageService> logger, 
-            IMessageEventPublisher publisher, 
-            IMessageRepository messageRepository, 
+            ILogger<MessageService> logger,
+            IMessageEventPublisher publisher,
+            IMessageRepository messageRepository,
             IChatRoomRepository chatRoomRepository,
             IUserRepository userRepository)
         {
@@ -43,9 +43,15 @@ namespace Application.Service
 
             _publisher.Publish(@event);
 
-            @event.UserId = Guid.Parse(Environment.GetEnvironmentVariable("bot_guid"));
+            var botEvent = new MessageEvent
+            {
+                Guid = Guid.NewGuid(),
+                Message = messageDto.Message,
+                ChatRoomId = messageDto.ChatRoomId,
+                UserId = Guid.Parse(Environment.GetEnvironmentVariable("bot_guid"))
+            };
 
-            _publisher.PublishBotMessage(@event);
+            _publisher.PublishBotMessage(botEvent);
         }
 
         public async Task SaveMessage(MessageEvent messageEvent)
@@ -70,7 +76,7 @@ namespace Application.Service
 
             var entity = new MessageEntity
             {
-                Id = Guid.NewGuid(),
+                Id = messageEvent.Guid,
                 CreationDate = DateTime.UtcNow,
                 ChatRoomId = messageEvent.ChatRoomId,
                 Message = messageEvent.Message,
