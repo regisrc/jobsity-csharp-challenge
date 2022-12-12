@@ -1,14 +1,10 @@
 ﻿using Application.Api.Interfaces;
 using Application.Api.Settings;
-using CsvHelper;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Polly;
 using RestSharp;
-using System.Formats.Asn1;
-using System.Globalization;
-using System.Text;
 
 namespace Application.Api.Services
 {

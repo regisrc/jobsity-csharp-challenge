@@ -18,7 +18,7 @@ namespace Application.Service
         private readonly IStockApiService _stockApiService;
 
         public MessageService(
-            ILogger<MessageService> logger, 
+            ILogger<MessageService> logger,
             IMessageEventPublisher publisher,
             IStockApiService stockApiService)
         {
@@ -34,8 +34,9 @@ namespace Application.Service
             if (messageEvent.Message.Contains(stockQueryParam))
             {
                 var result = await _stockApiService.Request(messageEvent.Message.Replace(stockQueryParam, string.Empty));
+                var stringResult = Encoding.Default.GetString(result);
 
-                using var stringReader = new StringReader(Encoding.Default.GetString(result));
+                using var stringReader = new StringReader(stringResult);
                 using var csvReader = new CsvReader(stringReader, CultureInfo.InvariantCulture);
                 csvReader.Context.RegisterClassMap<StockMap>();
                 var record = csvReader.GetRecords<StockDto>().FirstOrDefault();

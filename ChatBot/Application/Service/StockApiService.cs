@@ -17,7 +17,7 @@ namespace Application.Services
             return restClient ?? new RestClient(url);
         }
 
-        public async Task<byte[]?> Request(string stock, RestClient? restClient = null)
+        public async virtual Task<byte[]?> Request(string stock, RestClient? restClient = null)
         {
             var apiSettings = new ApiSettings
             {
@@ -39,6 +39,5 @@ namespace Application.Services
 
             return result;
         }
-
     }
 }
