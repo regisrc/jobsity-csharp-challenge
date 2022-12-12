@@ -49,7 +49,7 @@ namespace Application.Service
 
             var entity = new ChatRoomEntity
             {
-                Id = Guid.NewGuid(),
+                Id = chatRoomEvent.Guid,
                 CreationDate = DateTime.UtcNow,
                 Name = chatRoomEvent.Name,
                 CreatorId = chatRoomEvent.CreatorId
