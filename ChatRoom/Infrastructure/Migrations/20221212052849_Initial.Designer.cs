@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(ChatRoomContext))]
-    [Migration("20221211184241_Initial")]
+    [Migration("20221212052849_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
