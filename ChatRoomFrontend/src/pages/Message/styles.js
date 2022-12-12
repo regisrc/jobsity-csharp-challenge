@@ -48,7 +48,7 @@ export const MessageWrited = styled.p`
 
 export const MessageContainer = styled.div`
   display: flex;
-  flex-direction: ${props => props.direction};
+  flex-direction: row;
 
   width: 100%;
 `

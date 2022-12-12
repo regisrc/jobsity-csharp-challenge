@@ -42,7 +42,7 @@ const Message = () => {
   }
 
   const SetName = (id, name) => {
-    return id === userId ? `:${name}` : `${name}:`
+    return id === userId ? `${name} (You):` : `${name}:`
   }
 
   useEffect(() => {
