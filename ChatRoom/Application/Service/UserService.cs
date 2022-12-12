@@ -13,7 +13,7 @@ namespace Application.Service
         private readonly IUserRepository _userRepository;
         private readonly IUserEventPublisher _publisher;
 
-        public UserService(ILogger<MessageService> logger, IUserRepository userRepository, IUserEventPublisher publisher)
+        public UserService(ILogger<UserService> logger, IUserRepository userRepository, IUserEventPublisher publisher)
         {
             _logger = logger;
             _userRepository = userRepository;
